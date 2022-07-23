@@ -1,5 +1,6 @@
 package cinema;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.stereotype.Component;
@@ -32,5 +33,9 @@ public class Theatre {
 
     public List<Seats> getAvailable_seats() {
         return available_seats.stream().filter(s -> !s.isBooked()).collect(Collectors.toList());
+    }
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    public List<Seats> getBookedSeats () {
+        return available_seats.stream().filter(Seats::isBooked).collect(Collectors.toList());
     }
 }
