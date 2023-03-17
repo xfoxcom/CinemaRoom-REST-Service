@@ -10,8 +10,11 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Token {
+
     private String token;
+
     private Seats ticket;
+
     public void setToken() {
         UUID uuid = UUID.randomUUID();
         this.token = uuid.toString();
